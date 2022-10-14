@@ -25,7 +25,8 @@ test: venv
 	tests/04_handle_constraint_errors__test.py \
 	tests/05_authentication__test.py \
 	tests/06_rating_movies__test.py \
-	tests/07_favorites_list__test.py
+	tests/07_favorites_list__test.py \
+	tests/08_favorite_flag__test.py
 
 .PHONY: run
 run: venv
