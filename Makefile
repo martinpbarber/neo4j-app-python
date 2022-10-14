@@ -18,7 +18,8 @@ RECOMMENDATIONS_DUMP_FILE := recommendations-43.dump
 test: venv
 	$(ACTIVATE_VENV) && pytest -v -s -Wignore \
 	tests/01_connect_to_neo4j__test.py \
-	tests/02_movie_list__test.py
+	tests/02_movie_list__test.py \
+	tests/03_registering_a_user__test.py
 
 .PHONY: run
 run: venv
