@@ -22,7 +22,8 @@ test: venv
 	tests/01_connect_to_neo4j__test.py \
 	tests/02_movie_list__test.py \
 	tests/03_registering_a_user__test.py \
-	tests/04_handle_constraint_errors__test.py
+	tests/04_handle_constraint_errors__test.py \
+	tests/05_authentication__test.py
 
 .PHONY: run
 run: venv
