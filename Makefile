@@ -12,6 +12,8 @@ CONTAINER_AUTH := $(USERNAME)/$(PASSWORD)
 CONTAINER_DIR := $(PWD)/neo4j
 # See https://github.com/neo4j-graph-examples/recommendations
 RECOMMENDATIONS_DUMP_FILE := recommendations-43.dump
+# User email constraint 
+EMAIL_CONSTRAINT := CREATE CONSTRAINT UserEmailUnique IF NOT EXISTS FOR (u:User) REQUIRE u.email IS UNIQUE
 
 
 .PHONY: test
@@ -19,7 +21,8 @@ test: venv
 	$(ACTIVATE_VENV) && pytest -v -s -Wignore \
 	tests/01_connect_to_neo4j__test.py \
 	tests/02_movie_list__test.py \
-	tests/03_registering_a_user__test.py
+	tests/03_registering_a_user__test.py \
+	tests/04_handle_constraint_errors__test.py
 
 .PHONY: run
 run: venv
@@ -49,6 +52,9 @@ db-start:
 	@printf "Waiting for database "
 	@until curl -s -f -o /dev/null "http://localhost:7474"; do printf "."; sleep 1; done
 	@printf " Ready\n"
+
+	@echo "Adding user email constraint"
+	@echo '$(EMAIL_CONSTRAINT)' | docker exec -i $(CONTAINER_NAME) cypher-shell -u $(USERNAME) -p $(PASSWORD)
 
 .PHONY: db-stop
 db-stop:
