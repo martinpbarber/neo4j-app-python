@@ -13,6 +13,12 @@ CONTAINER_DIR := $(PWD)/neo4j
 # See https://github.com/neo4j-graph-examples/recommendations
 RECOMMENDATIONS_DUMP_FILE := recommendations-43.dump
 
+
+.PHONY: test
+test: venv
+	$(ACTIVATE_VENV) && pytest -v \
+	tests/01_connect_to_neo4j__test.py
+
 .PHONY: run
 run: venv
 	$(ACTIVATE_VENV) && flask run
