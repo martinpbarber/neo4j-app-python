@@ -34,7 +34,8 @@ test: venv
 	tests/11_movie_lists__test.py \
 	tests/12_movie_details__test.py \
 	tests/13_listing_ratings__test.py \
-	tests/14_person_list__test.py
+	tests/14_person_list__test.py \
+	tests/15_person_profile__test.py
 
 .PHONY: run
 run: venv
