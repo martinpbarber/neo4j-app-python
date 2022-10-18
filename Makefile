@@ -29,7 +29,8 @@ test: venv
 	tests/08_favorite_flag__test.py \
 	tests/09_genre_list__test.py \
 	tests/10_genre_details__test.py \
-	tests/11_movie_lists__test.py
+	tests/11_movie_lists__test.py \
+	tests/12_movie_details__test.py
 
 .PHONY: run
 run: venv
